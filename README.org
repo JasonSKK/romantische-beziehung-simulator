@@ -44,5 +44,5 @@ Linux appends to =relationship.log=. Pico logs over RTT via =defmt=.
   cargo run release
 
   # rp2350 -> build + flash with picotool
-  cargo run release --bin gf
+  cargo run --release --bin relationship-simulator
 #+end_src
