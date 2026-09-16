@@ -35,8 +35,9 @@ Created by Alan Jakub Pawlak and Iason Svoronos Kanavas as a coding challenge to
  
 Linux appends to =relationship.log=. Pico logs over RTT via =defmt=.
 
-* TODO
-- Optimise using lock free queue
+* LIST TODO
+
+1. Optimise using lock free queue
   
 * Build
 #+begin_src bash
