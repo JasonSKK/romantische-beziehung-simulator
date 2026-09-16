@@ -1,10 +1,43 @@
-#+TITLE: romantische beziehung simulator rp2350
+#+TITLE: romantische beziehung simulator
 
-This is a fun multithreadded application written for both linux and embedded RPI pico RP2350 that simulates a romantic relationship using LEDs.  It was created by Alan Jakub Pawlak and Iason Svoronos - Kanavas as a coding challenge for improving our knowledge in concurrency and our skills in developing multithreadded applications.
+ 
+A multithreaded relationship simulator, written in Rust for both Linux (linux-dev branch) and the embedded RP2350 (Raspberry Pi Pico 2 W, rp2350-dev branch).
+Relationship health is a shared state machine mutated by actors.  Event occurance is shown via logs (Linux) and LEDs (Pico).
+
+Created by Alan Jakub Pawlak and Iason Svoronos Kanavas as a coding challenge to improve our concurrency skills.
+
+* Actors
+ 
+| Actor       | Event                          | Δ   |
+|-------------+--------------------------------+-----|
+| Boyfriend   | used the word "optimised"      | -3  |
+| Boyfriend   | explained something unasked    | -5  |
+| Boyfriend   | actually did something nice    | +4  |
+| Girlfriend  | planned a nice evening         | +6  |
+| Girlfriend  | gave the silent treatment      | -7  |
+| Girlfriend  | forgave something              | +10 |
+| OtherHotGuy | liked a story                  | -2  |
+| OtherHotGuy | showed up at the gym           | -15 |
+ 
+* Threading
+ 
+- Linux: one OS thread per actor, shared =Arc<Mutex<i8>>=, one monitor thread.
+- Pico: one [[https://github.com/embassy-rs][embassy]] async task per actor on a single core executor shared via =static Mutex<ThreadModeRawMutex, i8>=. Randomness from the on-chip TRNG.
+ 
+* Output
+ 
+| Signal        | Linux          | Pico (LED)          |
+|---------------+----------------+---------------------|
+| Boyfriend     | log line       | blue, GPIO12        |
+| Girlfriend    | log line       | green, GPIO14       |
+| OtherHotGuy   | log line       | red, GPIO15         |
+| Health / warn | log line       | warning LED blink   |
+ 
+Linux appends to =relationship.log=. Pico logs over RTT via =defmt=.
 
 * TODO
 - Optimise using lock free queue
-
+  
 * Build
 #+begin_src bash
   # linux
@@ -13,4 +46,3 @@ This is a fun multithreadded application written for both linux and embedded RPI
   # rp2350 -> build + flash with picotool
   cargo run release --bin gf
 #+end_src
-
