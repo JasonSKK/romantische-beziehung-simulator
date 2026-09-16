@@ -1,0 +1,16 @@
+#+TITLE: romantische beziehung simulator rp2350
+
+This is a fun multithreadded application written for both linux and embedded RPI pico RP2350 that simulates a romantic relationship using LEDs.  It was created by Alan Jakub Pawlak and Iason Svoronos - Kanavas as a coding challenge for improving our knowledge in concurrency and our skills in developing multithreadded applications.
+
+* TODO
+- Optimise using lock free queue
+
+* Build
+#+begin_src bash
+  # linux
+  cargo run release
+
+  # rp2350 -> build + flash with picotool
+  cargo run release --bin gf
+#+end_src
+
