@@ -4,7 +4,7 @@
 A multithreaded relationship simulator, written in Rust for both Linux (linux-dev branch) and the embedded RP2350 (Raspberry Pi Pico 2 W, rp2350-dev branch).
 Relationship health is a shared state machine mutated by actors.  Event occurance is shown via logs (Linux) and LEDs (Pico).
 
-Created by Alan Jakub Pawlak and Iason Svoronos Kanavas as a coding challenge to improve our concurrency skills.
+Created by Alan Pawlak and Iason Svoronos Kanavas as a coding challenge to improve our concurrency skills.
 
 * Breadboard layout
 [[./images/breadboard-layout-relationship-simulator.jpg]]
