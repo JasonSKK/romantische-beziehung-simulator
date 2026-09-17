@@ -6,6 +6,9 @@ Relationship health is a shared state machine mutated by actors.  Event occuranc
 
 Created by Alan Jakub Pawlak and Iason Svoronos Kanavas as a coding challenge to improve our concurrency skills.
 
+* Breadboard layout
+[[./images/breadboard-layout-relationship-simulator.jpg]]
+
 * Actors
  
 | Actor       | Event                          | Δ   |
